@@ -24,6 +24,8 @@ def main():
                       help="remove 'build' and 'dist' directories next to setup.py files")
     parser.add_option("-a", action="store_true", dest="all",
                       help="synonym for '-p -S -d -e pip-log.txt'")
+    parser.add_option("-q", "--quiet", action="store_true", dest="quiet",
+                      help="don't print every deleted file on output")
     parser.add_option("-n", "--dryrun", dest="dryrun", default=False,
         action="store_true",
         help="don't actually delete but display would-be-removed filenames.")
@@ -76,7 +78,8 @@ class Cleanup:
         if self.options.dryrun:
             py.builtin.print_("would remove", path)
         else:
-            py.builtin.print_("removing", path)
+            if not self.options.quiet:
+                py.builtin.print_("removing", path)
             path.remove()
 
     def XXXcallsetup(self, setup, *args):
