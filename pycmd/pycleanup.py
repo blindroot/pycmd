@@ -25,7 +25,7 @@ def main():
     parser.add_option("-a", action="store_true", dest="all",
                       help="synonym for '-p -S -d -e pip-log.txt'")
     parser.add_option("-q", "--quiet", action="store_true", dest="quiet",
-                      help="don't print every deleted file on output")
+                      help="don't print each deleted filename on output")
     parser.add_option("-n", "--dryrun", dest="dryrun", default=False,
         action="store_true",
         help="don't actually delete but display would-be-removed filenames.")
